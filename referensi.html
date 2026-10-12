@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="h-full w-full" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Display Informasi Kamar Pasien - Smart Patient Care (L-Bar Signage)</title>
+<!-- Tailwind CSS CDN with forms & container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.preconnect.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          mono: ['"Inter"', 'monospace'],
+        },
+        colors: {
+          brandNavy: '#0F172A',
+          brandSurface: '#F8FAFC',
+          brandCard: '#FFFFFF',
+          brandBorder: '#E2E8F0',
+          accentBlue: '#0284C7',
+          accentLightBlue: '#0EA5E9',
+          accentGold: '#D97706',
+          medicalRed: '#DC2626',
+        },
+        animation: {
+          ticker: 'ticker 42s linear infinite',
+        },
+        keyframes: {
+          ticker: {
+            '0%': { transform: 'translateX(100%)' },
+            '100%': { transform: 'translateX(-100%)' },
+          }
+        }
+      }
+    }
+  }
+</script>
+<!-- Custom Clean Hospital Signage Styles (Light Theme) -->
+<style data-purpose="custom-layout">
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .hospital-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+  }
+
+  .cinematic-overlay {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.0) 40%, rgba(15, 23, 42, 0.6) 100%);
+  }
+
+  .font-tabular {
+    font-feature-settings: "tnum" 1, "cv05" 1;
+  }
+</style>
+</head>
+<body class="h-screen w-screen flex flex-col bg-[#F8FAFC] overflow-hidden text-slate-800">
+<!-- Subtle Status Header Edge Line -->
+<div class="h-1 w-full bg-slate-200 shrink-0 z-30">
+<div class="h-full w-1/4 bg-sky-600"></div>
+</div>
+<!-- MAIN L-SHAPE CONTAINER: TOP PORTION (Main TV Viewport + Right Side Panel) -->
+<div class="flex-1 flex w-full overflow-hidden min-h-0 relative z-10">
+<!-- ======================================================== -->
+<!-- 1. MAIN MEDIA SCREEN (Scenic Relaxation & Patient Info)   -->
+<!-- ======================================================== -->
+<main class="flex-1 relative h-full flex flex-col justify-end overflow-hidden bg-slate-100 border-r border-slate-200" data-purpose="main-media-viewport">
+<!-- Realistic Calming Alpine / Forest Lake Nature Background -->
+<img alt="Nature healing relaxation screen background" class="absolute inset-0 w-full h-full object-cover object-center z-0 scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIIt5R_XeXKK2h9nCf927jynquNiGZAOk_amCdfOaWVgBQ3J3VJ1cdtb8cHMCY-rNZoEQVkRumrWTz3xe1LESOgpSLq32Mfrr-fhTaTuk7aOnXldKhopTe-X7IsKClJaxnLKAcbnryOUdcjq3Xm_FfCSJBNuxYvqx77i3y7RiNI939wsFlGLUq9HRaWAyw68WkJ-cNFtEglwFIzvhgzRS_0DpMMzqhEVVKxjZS6eXXU5K_JybEeYBYBw"/>
+<!-- Subtle Soft Gradients for High Readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent z-[1] pointer-events-none"></div>
+<div class="absolute inset-0 cinematic-overlay z-[1] pointer-events-none"></div>
+<!-- Hospital Welcome Card & Patient Details Overlay (Light Glassmorphic Card) -->
+<div class="relative z-10 px-10 pb-8" data-purpose="hero-patient-welcome">
+<div class="max-w-3xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-7 rounded-xl shadow-xl">
+<!-- Welcome Tag -->
+<div class="flex items-center space-x-3 mb-2">
+<span class="px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wider bg-amber-50 text-amber-700 border border-amber-300 uppercase">
+            Selamat Datang · Rawat Inap
+          </span>
+<span class="text-xs text-slate-500 font-medium">Semoga kenyamanan dan ketenangan menyertai masa pemulihan Anda</span>
+</div>
+<!-- Prominent Patient Name -->
+<h1 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mt-1">
+          Bapak / Ibu Ahmad Fauzi &amp; Keluarga
+        </h1>
+<!-- Structured Metadata Bar -->
+<div class="grid grid-cols-3 gap-3.5 mt-5 pt-4 border-t border-slate-200" data-purpose="patient-meta-badges">
+<!-- Room info -->
+<div class="bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 shadow-sm">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold block">Ruang Perawatan</span>
+<span class="text-sm font-bold text-slate-900 mt-0.5 block">Bougenville 304 · Bed A</span>
+</div>
+<!-- Class info -->
+<div class="bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 shadow-sm">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold block">Kelas Layanan</span>
+<span class="text-sm font-bold text-slate-800 mt-0.5 block">VIP Superior</span>
+</div>
+<!-- Doctor in Charge -->
+<div class="bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 shadow-sm">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold block">Dokter Penanggung Jawab (DPJP)</span>
+<span class="text-sm font-bold text-slate-900 mt-0.5 block truncate">dr. Hendra Setiawan, Sp.PD</span>
+</div>
+</div>
+<!-- Comfort Quote / Prayer -->
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between">
+<p class="text-slate-600 italic text-xs leading-relaxed font-normal">
+            “Semoga lekas pulih dan nyaman beristirahat. Seluruh tim medis kami siap melayani Anda dengan penuh perhatian.”
+          </p>
+<span class="text-[11px] font-mono text-slate-400 shrink-0 ml-4 font-medium">Kasih Medika Patient System v4.2</span>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 2. VERTICAL SIDEBAR (L-Shape Right Column - Light Mode)   -->
+<!-- ======================================================== -->
+<aside class="w-[400px] xl:w-[430px] shrink-0 bg-[#F8FAFC] flex flex-col justify-between p-5 overflow-y-auto space-y-4 border-l border-slate-200" data-purpose="vertical-sidebar-lbar">
+<!-- Section A: Official Clock & Hospital Bed Identity -->
+<div class="hospital-card rounded-xl p-5 shadow-sm" data-purpose="sidebar-clock-identity">
+<div class="flex items-start justify-between">
+<div>
+<!-- Large High-Legibility Tabular Clock -->
+<div class="text-4xl xl:text-5xl font-extrabold tracking-tight text-slate-900 font-tabular leading-none" id="liveClock">
+            13:17:33
+          </div>
+<div class="text-xs font-semibold text-slate-500 mt-2" id="liveDate">
+            Minggu, 11 Oktober 2026
+          </div>
+</div>
+<div class="flex flex-col items-end space-y-1">
+<span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-sky-100 text-sky-800 border border-sky-200">
+            WIB
+          </span>
+<span class="text-[11px] font-mono text-slate-500 flex items-center gap-1.5 pt-1 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-emerald-200"></span>
+            Online
+          </span>
+</div>
+</div>
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Lokasi Kamar</span>
+<span class="text-sm font-bold text-slate-900">R. Bougenville 304 <span class="text-slate-400 font-normal">/ Bed A</span></span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Status Nurse Call</span>
+<span class="text-xs font-bold text-emerald-700 flex items-center justify-end gap-1 mt-0.5">
+<svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Siap Sedia 24 Jam
+          </span>
+</div>
+</div>
+</div>
+<!-- Section B: Structured Visiting Hours Widget -->
+<div class="hospital-card rounded-xl p-5 shadow-sm flex-1 flex flex-col justify-between" data-purpose="visiting-hours-widget">
+<div>
+<div class="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
+<h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-2">
+<svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Jadwal Jam Kunjungan
+        </h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+          Sesi Aktif
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 text-xs">
+<div class="p-3 rounded-lg bg-sky-50/70 border border-sky-100">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 block font-semibold">Sesi Siang</span>
+<span class="font-extrabold text-sky-900 font-mono text-base block mt-0.5">11:00 – 13:00</span>
+<span class="text-[10px] text-amber-700 font-semibold inline-block mt-0.5">● Sedang Berlangsung</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 block font-semibold">Sesi Sore</span>
+<span class="font-extrabold text-slate-800 font-mono text-base block mt-0.5">17:00 – 20:00</span>
+<span class="text-[10px] text-slate-500 font-medium inline-block mt-0.5">Nanti Sore</span>
+</div>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-slate-100 text-[11px] text-slate-500 leading-relaxed flex items-start gap-1.5">
+<span class="text-sky-600 font-bold">•</span>
+<span>Maksimal 2 (dua) pengunjung di dalam kamar secara bergantian demi ketenangan dan kenyamanan pemulihan pasien.</span>
+</div>
+</div>
+<!-- Section C: Editorial Patient Education Message -->
+<div class="hospital-card rounded-xl p-5 shadow-sm" data-purpose="health-tip-rotator-card">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-sky-500"></span>
+<span class="text-[11px] font-bold text-slate-800 uppercase tracking-wider">Edukasi Kesehatan</span>
+</div>
+<span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Tips Harian</span>
+</div>
+<div class="min-h-[58px]" id="healthTipContainer">
+<h4 class="text-xs font-bold text-slate-900 transition-all duration-300" id="tipTitle">
+          Pentingnya Hidrasi Optimal
+        </h4>
+<p class="text-[11px] text-slate-600 mt-1 leading-relaxed transition-all duration-300" id="tipDesc">
+          Minum air putih 2–2.5 liter per hari (sesuai anjuran dokter) mempercepat pengeluaran sisa metabolik obat dan regenerasi sel.
+        </p>
+</div>
+</div>
+<!-- Section D: Direct Emergency / Nurse Call Unit -->
+<div class="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center justify-between shadow-sm" data-purpose="emergency-nurse-call-cta">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-lg bg-red-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900">Butuh Bantuan Segera?</p>
+<p class="text-[11px] text-red-700 font-medium">Tekan tombol bel pada remote ranjang</p>
+</div>
+</div>
+<button class="text-xs font-bold uppercase px-3.5 py-2 rounded-lg bg-medicalRed hover:bg-red-700 text-white tracking-wide shadow transition-colors" type="button">
+        NURSE CALL
+      </button>
+</div>
+</aside>
+</div>
+<!-- ======================================================== -->
+<!-- 3. BOTTOM L-BAR TICKER / INTEGRATED FOOTER (Light Mode)  -->
+<!-- ======================================================== -->
+<footer class="h-14 w-full bg-white border-t border-slate-200 flex items-stretch z-20 shrink-0 shadow-sm" data-purpose="horizontal-bottom-ticker-lbar">
+<!-- Left Brand Anchor -->
+<div class="bg-slate-50 text-slate-900 px-6 flex items-center space-x-3 shrink-0 border-r border-slate-200">
+<div class="w-6 h-6 rounded bg-sky-600 flex items-center justify-center font-bold text-white text-xs shadow-sm">
+      +
+    </div>
+<div class="leading-tight">
+<span class="font-extrabold text-xs tracking-wider block text-slate-900">RS KASIH MEDIKA UTAMA</span>
+<span class="text-[9px] text-slate-500 tracking-wider uppercase block font-semibold">In-Patient Information System</span>
+</div>
+</div>
+<!-- Continuous Running Broadcast Ticker -->
+<div class="flex-1 overflow-hidden relative flex items-center bg-white">
+<div class="whitespace-nowrap inline-flex items-center text-xs text-slate-700 space-x-12 animate-ticker">
+<!-- Motto -->
+<div class="inline-flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-sky-500"></span>
+<span class="font-semibold text-slate-800">“Melayani dengan Integritas, Profesionalisme, dan Sepenuh Hati”</span>
+</div>
+<!-- Nurse Station Hotline -->
+<div class="inline-flex items-center space-x-2">
+<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Pos Perawat Bougenville Lantai 3: <strong class="text-slate-900 font-bold">Ext. 104</strong> (Standby 24 Jam)</span>
+</div>
+<!-- Nutrition & Catering -->
+<div class="inline-flex items-center space-x-2">
+<svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Konsultasi Nutrisi &amp; Diet Pasien: <strong class="text-slate-900 font-bold">Hubungi Ext. 208</strong></span>
+</div>
+<!-- Pharmacy Service -->
+<div class="inline-flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Layanan Farmasi Rawat Inap: <strong class="text-slate-900 font-bold">Tersedia 24 Jam Non-Stop</strong></span>
+</div>
+</div>
+</div>
+<!-- Right Fast-Status Footer Meta -->
+<div class="hidden lg:flex items-center px-5 bg-slate-50 border-l border-slate-200 shrink-0 space-x-3 text-xs">
+<div class="flex items-center space-x-2 text-slate-600">
+<span class="w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-emerald-200"></span>
+<span class="text-slate-500 font-medium">Sistem Perawatan:</span>
+<span class="text-slate-900 font-bold">Terhubung Aktif</span>
+</div>
+<span class="text-slate-300">|</span>
+<span class="text-slate-500 font-mono text-[11px] font-semibold">Okt 2026</span>
+</div>
+</footer>
+<!-- ======================================================== -->
+<!-- SCRIPTS: Real-Time Tabular Clock & Health Tips Rotator   -->
+<!-- ======================================================== -->
+<script data-purpose="live-clock">
+  function updateClock() {
+    const now = new Date();
+    
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const clockElement = document.getElementById('liveClock');
+    if (clockElement) {
+      clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+    const dayName = days[now.getDay()];
+    const dayDate = now.getDate();
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
+
+    const dateElement = document.getElementById('liveDate');
+    if (dateElement) {
+      dateElement.textContent = `${dayName}, ${dayDate} ${monthName} ${year}`;
+    }
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+<script data-purpose="health-tips-rotator">
+  const healthTips = [
+    {
+      title: "Pentingnya Hidrasi Optimal",
+      desc: "Minum air putih 2–2.5 liter per hari (sesuai anjuran dokter) mempercepat pengeluaran sisa metabolik obat dan regenerasi sel."
+    },
+    {
+      title: "Kualitas Istirahat Malam",
+      desc: "Istirahat yang tenang dan tidur cukup merangsang pelepasan hormon pemulihan jaringan serta memperkuat imunitas alami tubuh."
+    },
+    {
+      title: "Pencegahan Risiko Terpeleset",
+      desc: "Gunakan alas kaki anti-selip dan panggil perawat melalui tombol bel sebelum beranjak dari tempat tidur jika merasa limbung."
+    },
+    {
+      title: "Nutrisi Terukur untuk Penyembuhan",
+      desc: "Komposisi menu telah disesuaikan oleh ahli gizi klinis untuk mendukung target pemulihan organ dan kestabilan metabolisme Anda."
+    }
+  ];
+
+  let currentTipIndex = 0;
+  const tipTitleEl = document.getElementById('tipTitle');
+  const tipDescEl = document.getElementById('tipDesc');
+
+  function cycleHealthTips() {
+    currentTipIndex = (currentTipIndex + 1) % healthTips.length;
+    
+    if (tipTitleEl && tipDescEl) {
+      tipTitleEl.style.opacity = '0';
+      tipDescEl.style.opacity = '0';
+
+      setTimeout(() => {
+        tipTitleEl.textContent = healthTips[currentTipIndex].title;
+        tipDescEl.textContent = healthTips[currentTipIndex].desc;
+        tipTitleEl.style.opacity = '1';
+        tipDescEl.style.opacity = '1';
+      }, 300);
+    }
+  }
+
+  setInterval(cycleHealthTips, 8000);
+</script>
+</body></html>

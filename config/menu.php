@@ -89,6 +89,18 @@ return [
         ],
     ],
     [
+        'title' => 'Informasi Kamar',
+        'menus' => [
+            [
+                'label' => 'Kamar Pasien',
+                'icon' => 'bi-tv-fill',
+                'route' => 'rooms.index',
+                'route_pattern' => 'rooms.*',
+                'permission' => 'manage_rooms',
+            ],
+        ],
+    ],
+    [
         'title' => 'Laporan',
         'menus' => [
             [

@@ -9,6 +9,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\OrganizationTypeController;
 use App\Http\Controllers\OrganizationUnitController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomDisplayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,17 @@ use App\Http\Controllers\ActivityLogController;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect()->route('room-display.show');
+});
+
+// Landing page display kamar pasien (publik, token via cookie)
+Route::prefix('informasi-kamar')->name('room-display.')->group(function () {
+    Route::get('/', [RoomDisplayController::class, 'show'])->name('show');
+    Route::post('/verifikasi', [RoomDisplayController::class, 'verify'])
+        ->middleware('throttle:10,1')->name('verify');
+    Route::get('/data', [RoomDisplayController::class, 'data'])->name('data');
+    Route::post('/heartbeat', [RoomDisplayController::class, 'heartbeat'])
+        ->middleware('throttle:60,1')->name('heartbeat');
 });
 
 // Authentication routes
@@ -79,6 +91,19 @@ Route::middleware('auth')->group(function () {
             ->name('organization-units.remove-member');
         Route::patch('organization-units/{organization_unit}/head', [OrganizationUnitController::class, 'updateHead'])
             ->name('organization-units.update-head');
+    });
+
+    // Informasi Kamar Pasien
+    Route::middleware('permission:manage_rooms')->prefix('admin')->name('rooms.')->group(function () {
+        Route::get('/informasi-kamar', [RoomController::class, 'index'])->name('index');
+        Route::get('/informasi-kamar/create', [RoomController::class, 'create'])->name('create');
+        Route::post('/informasi-kamar', [RoomController::class, 'store'])->name('store');
+        Route::get('/informasi-kamar/{room}', [RoomController::class, 'show'])->name('show');
+        Route::put('/informasi-kamar/{room}', [RoomController::class, 'update'])->name('update');
+        Route::delete('/informasi-kamar/{room}', [RoomController::class, 'destroy'])->name('destroy');
+        Route::get('/informasi-kamar/{room}/preview', [RoomController::class, 'preview'])->name('preview');
+        Route::post('/informasi-kamar/{room}/pin', [RoomController::class, 'rotatePin'])->name('pin');
+        Route::post('/informasi-kamar/{room}/displays/{display}/revoke', [RoomController::class, 'revokeDisplay'])->name('displays.revoke');
     });
 
 });
